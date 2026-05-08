@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="referrer" content="no-referrer"/>
+<title>Bazos e2e test page</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px; font: 14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background: #f6f6f6; color: #222; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a1a; color: #e8e8e8; }
+    .card, .group { background: #222; color: #e8e8e8; }
+    .deal { border-color: #333; }
+    .meta { color: #bbb; }
+    .reason { color: #ccc; }
+    .open-all, .open-group { background: #4a8cff; color: #fff; }
+    a { color: #8ab4f8; }
+  }
+  .card { max-width: 900px; margin: 0 auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  h1 { margin: 0 0 8px; font-size: 24px; }
+  .subtitle { color: #666; margin: 0 0 24px; font-size: 13px; }
+  .open-all, .open-group { display: inline-block; padding: 10px 16px; background: #0b66d9; color: #fff; border: 0; border-radius: 6px; font: 600 14px -apple-system,sans-serif; cursor: pointer; }
+  .open-group { padding: 6px 12px; font-size: 13px; }
+  .open-all:hover, .open-group:hover { background: #084fb0; }
+  .group { margin-top: 24px; background: #fff; }
+  .group-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  h2 { margin: 0; font-size: 18px; font-weight: 600; }
+  .count { color: #888; font-weight: 400; }
+  .deals { list-style: none; padding: 0; margin: 0; }
+  .deal { padding: 12px 0; border-bottom: 1px solid #eee; }
+  .deal:last-child { border-bottom: 0; }
+  .deal-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+  .deal-title a { color: #0b66d9; text-decoration: none; }
+  .deal-title a:hover { text-decoration: underline; }
+  .meta { color: #555; font-size: 13px; margin-bottom: 4px; }
+  .reason { color: #333; font-size: 13px; margin-bottom: 6px; }
+  .drop { color: #0a7a1e; font-weight: 600; }
+  .topbadge { color: #b85a00; font-weight: 600; }
+  .new-pill { display: inline-block; padding: 2px 8px; margin-left: 6px; background: #0a7a1e; color: #fff; border-radius: 999px; font-size: 11px; font-weight: 600; vertical-align: middle; }
+  .deal.is-new { border-left: 3px solid #0a7a1e; padding-left: 9px; margin-left: -12px; }
+  footer { margin-top: 32px; color: #888; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Bazos e2e test page</h1>
+    <p class="subtitle">Vygenerované 2026-05-08T17:44:16.057Z · Celkom 1 ponuka · <strong>1 nový tento cyklus</strong></p>
+    <p><button class="open-all" data-target="all" type="button">Otvoriť všetky (1)</button></p>
+    
+        <section id="group-0" class="group">
+          <div class="group-header">
+            <h2>iPhone 15 <span class="count">(1)</span> <span class="new-pill">1 nový</span></h2>
+            <button class="open-group" data-target="group-0" type="button">Otvoriť všetky v skupine</button>
+          </div>
+          <ul class="deals">
+    <li class="deal is-new">
+      <div class="deal-title"><a data-deal href="https://mobil.bazos.sk/inzerat/191147882/predam-iphone-15-pro-cierny-titan.php" rel="noopener noreferrer" target="_blank">Predám iPhone 15 Pro 128GB čierny titán.</a> <span class="new-pill">NOVÝ</span></div>
+      <div class="meta"><strong>439€</strong> · Žilina · <span class="topbadge">TOP</span></div>
+      <div class="reason">Test match: Predám iPhone 15 Pro 128GB čierny titán.</div>
+    </li></ul>
+        </section>
+    <footer>bazos-bot</footer>
+  </div>
+  <script>
+  (function(){
+    function openAll(btn){
+      var target = btn.getAttribute('data-target');
+      var scope = target === 'all' ? document : document.getElementById(target);
+      if (!scope) return;
+      var links = scope.querySelectorAll('[data-deal]');
+      for (var i = 0; i < links.length; i++) {
+        window.open(links[i].href, '_blank', 'noopener');
+      }
+    }
+    document.addEventListener('click', function(e){
+      var t = e.target;
+      if (t && (t.classList.contains('open-all') || t.classList.contains('open-group'))) {
+        openAll(t);
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
